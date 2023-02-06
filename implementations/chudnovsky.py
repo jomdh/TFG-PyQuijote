@@ -36,16 +36,13 @@ def den(k):
 
 
 
-# Numerador- root_precision es el número de dígitos significativos a usar al calcular la raíz.
+#Numerador- root_precision es el número de dígitos significativos a usar al calcular la raíz.
+    
 @functools.lru_cache(maxsize=None)
 def num(root_precision):
-    p = decimal.getcontext().prec
-    decimal.getcontext().prec = root_precision
-    d = decimal.Decimal(10005).sqrt()
-    decimal.getcontext().prec = p
-    # print(d)
-    return 426880 * d
-    
+    with decimal.localcontext() as ctx:
+        ctx.prec = root_precision
+        return 426880 * decimal.Decimal(10005).sqrt()
 
 # Calcula el algoritmo de Chudnovsky para un k y precisión dados.
 def chudnovsky(k, root_precision):
@@ -80,5 +77,3 @@ def get_pi(n):
 # prueba de la función principal
 if __name__ == '__main__':
     get_pi(100)
-    get_pi(110)
-    get_pi(111)
