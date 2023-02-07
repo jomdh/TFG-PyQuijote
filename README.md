@@ -1,2 +1,2 @@
 # TFG-PyQuijote
-Tfg de Joaquin Martinez del Hoyo. 
+TFG de Joaquin Martinez del Hoyo. 
