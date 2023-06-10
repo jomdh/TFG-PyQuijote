@@ -93,7 +93,10 @@ def pi_chudnovsky_bs(digits):
         return Pab, Qab, Tab
     # how many terms to compute
     DIGITS_PER_TERM = math.log10(C3_OVER_24/6/2/6)
+    # print (DIGITS_PER_TERM)
     N = int(digits/DIGITS_PER_TERM + 1)
+    # print (N)
+
     # Calclate P(0,N) and Q(0,N)
     P, Q, T = bs(0, N)
     one = 10**digits
