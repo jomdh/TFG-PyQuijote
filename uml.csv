@@ -1,0 +1,18 @@
+Class Name;Attribute Name;Attribute Type;Method Name;Return Type
+PiEncoder;text;str;__init__;
+PiEncoder;l;int;__init__;
+PiEncoder;chars;set;__init__;
+PiEncoder;n;int;__init__;
+PiEncoder;chunks;list;__init__;
+PiEncoder;mapping;dict;__init__;
+PiEncoder;df;DataFrame;__init__;
+PiEncoder;;calc_initial_n;int;
+PiEncoder;;find_mapping;int;
+PiEncoder;;generate_pi_chunks;list;
+PiEncoder;;generate_dataframe;int;
+PiEncoder;;print_dataframe;None;
+PiEncoder;;plot_mapping;None;
+Path;;exists;None;
+itertools;;zip_longest;None;
+decimal;;Decimal;None;
+implementations;;pi_chudnovsky_bs;None;
