@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PiEncoder_v1 module &#8212; documentación de PiEncoder - </title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-PiEncoder_v1">
+<span id="piencoder-v1-module"></span><h1>PiEncoder_v1 module<a class="headerlink" href="#module-PiEncoder_v1" title="Enlace permanente a este encabezado">¶</a></h1>
+<p>PiEncoder es un script en Python que codifica un texto dado en códigos numéricos utilizando los lugares decimales de π.</p>
+<p>La clase principal de este módulo, PiEncoder, toma un texto y genera una codificación basada en los lugares decimales de π. El algoritmo de Chudnovsky se utiliza para generar los dígitos necesarios de π.</p>
+<p>Además de generar los dígitos de π en tiempo de ejecución, este módulo también ofrece la posibilidad de cargar los decimales de π desde un archivo con decimales pre-computados. Esto proporciona una alternativa eficiente al cálculo de los decimales de π, ya que los usuarios pueden simplemente descargar una tabla pre-computada de decimales de π de la web y usarla para codificar su texto.</p>
+<p>El módulo también incluye una función <cite>main</cite> que permite usar la funcionalidad de PiEncoder desde la línea de comandos. Los usuarios pueden especificar el texto a codificar, el número de decimales de π a usar y la ruta a un archivo con los decimales pre-computados de π.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">PiEncoder_v1.</span></span><span class="sig-name descname"><span class="pre">PiEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_precomp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.buscar_mapeo">
+<span class="sig-name descname"><span class="pre">buscar_mapeo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.buscar_mapeo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Busca un mapeo válido, generando fragmentos de Pi y mapeando los caracteres a estos fragmentos.</p>
+<p>Una vez que se encuentra un mapeo válido, se almacena en el atributo <cite>mapping</cite> del objeto PiEncoder.</p>
+<p>Si no se encuentra un mapeo válido, el método incrementa el valor de <cite>n</cite> y vuelve a intentarlo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.calculo_n_inicial">
+<span class="sig-name descname"><span class="pre">calculo_n_inicial</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.calculo_n_inicial" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Calcula el valor inicial de n, basado en la longitud del set de caracteres.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.cargar_datos_precomputados">
+<span class="sig-name descname"><span class="pre">cargar_datos_precomputados</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.cargar_datos_precomputados" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Carga los decimales de Pi desde un archivo precomputado.</p>
+<p>Este método intenta abrir un archivo dado y lee los primeros <cite>self.n * self.l + 2</cite> decimales de Pi.
+En caso de error, este método devuelve None y muestra un mensaje de error correspondiente.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>archivo (str): Ruta al archivo que contiene los decimales precomputados de Pi.</p>
+</dd>
+<dt>Returns:</dt><dd><p>decimal.Decimal: Los decimales de Pi leídos del archivo, o None si hubo algún error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.generar_dataframe">
+<span class="sig-name descname"><span class="pre">generar_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.generar_dataframe" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera un dataframe a partir del mapeo encontrado.</p>
+<p>Este método transforma el mapeo en una matriz y luego genera un DataFrame a partir de esta matriz.
+El DataFrame se agrupa por el valor de los mapeos y se ordena por la cantidad de claves correspondientes a cada valor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.generar_fragmentos">
+<span class="sig-name descname"><span class="pre">generar_fragmentos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.generar_fragmentos" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera los fragmentos de Pi necesarios para el mapeo.</p>
+<p>Este método primero verifica si hay un archivo de decimales precomputados de Pi disponible.
+Si el archivo está disponible, se intenta cargar los decimales de Pi desde este archivo.
+Si el archivo no está disponible o si hay un error al leer el archivo, se utilizan los decimales de Pi
+generados por el algoritmo de Chudnovsky.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: Una lista de fragmentos de Pi generados a partir de los decimales de Pi.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.graficar_mapeo">
+<span class="sig-name descname"><span class="pre">graficar_mapeo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.graficar_mapeo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Genera una gráfica de barras a partir del dataframe.</p>
+<p>Este método genera una gráfica de barras que muestra la distribución de los valores en el DataFrame.
+La gráfica se genera solo si el DataFrame no está vacío. Si el DataFrame está vacío, se muestra un mensaje de error.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="PiEncoder_v1.PiEncoder.imprimir_dataframe">
+<span class="sig-name descname"><span class="pre">imprimir_dataframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.PiEncoder.imprimir_dataframe" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Imprime el dataframe generado y lo guarda como archivo CSV.</p>
+<p>Este método muestra el DataFrame generado por <cite>generar_dataframe</cite> y lo guarda como archivo CSV con el nombre “mapping.csv”.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="PiEncoder_v1.main">
+<span class="sig-prename descclassname"><span class="pre">PiEncoder_v1.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">archivo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archivo_precomp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PiEncoder_v1.main" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Función principal del programa que se encarga de la codificación del texto a partir de Pi.</p>
+<p>Esta función se encarga de leer el archivo de texto a codificar, crear una instancia de PiEncoder, 
+buscar el mapeo óptimo y generar/imprimir el dataframe correspondiente.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>archivo (str): Ruta al archivo con el texto a codificar.
+start (int, opcional): Índice de inicio del texto a codificar. Por defecto es 0.
+end (int, opcional): Índice de fin del texto a codificar. Por defecto es 0.
+n (int, opcional): Número de decimales de Pi a utilizar. Si no se especifica, se calcula automáticamente.
+archivo_precomp (str, opcional): Ruta al archivo con los decimales de Pi precomputados. 
+Si no se especifica, se generan los decimales necesarios.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PiEncoder</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Búsqueda rápida</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Ir a" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Joaquin Martinez.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/PiEncoder_v1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

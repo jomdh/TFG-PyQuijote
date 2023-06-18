@@ -1,0 +1,7 @@
+pi\_chudnovsky\_bs module
+=========================
+
+.. automodule:: pi_chudnovsky_bs
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+PiEncoder\_v1 module
+====================
+
+.. automodule:: PiEncoder_v1
+   :members:
+   :undoc-members:
+   :show-inheritance:
